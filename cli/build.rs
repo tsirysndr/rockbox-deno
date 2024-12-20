@@ -154,6 +154,7 @@ mod ts {
       deno_broadcast_channel::get_declaration(),
     );
     op_crate_libs.insert("deno.net", deno_net::get_declaration());
+    op_crate_libs.insert("deno.rb", deno_rb::get_declaration());
 
     // ensure we invalidate the build properly.
     for (_, path) in op_crate_libs.iter() {
@@ -420,12 +421,14 @@ fn main() {
 
   let c = PathBuf::from(env::var_os("CARGO_MANIFEST_DIR").unwrap());
   let o = PathBuf::from(env::var_os("OUT_DIR").unwrap());
-
+println!(">> manomboka");
   let compiler_snapshot_path = o.join("COMPILER_SNAPSHOT.bin");
   ts::create_compiler_snapshot(compiler_snapshot_path, &c);
+println!(">> vita");
 
   #[cfg(not(feature = "hmr"))]
   {
+    println!(">> hmr");
     let cli_snapshot_path = o.join("CLI_SNAPSHOT.bin");
     create_cli_snapshot(cli_snapshot_path);
   }
@@ -440,6 +443,7 @@ fn main() {
     ));
     res.compile().unwrap();
   }
+  println!(">> tsy haiko");
 }
 
 fn deno_webgpu_get_declaration() -> PathBuf {

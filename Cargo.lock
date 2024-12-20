@@ -2128,6 +2128,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "deno_rb"
+version = "0.1.0"
+dependencies = [
+ "deno_core",
+ "reqwest",
+]
+
+[[package]]
 name = "deno_resolver"
 version = "0.15.0"
 dependencies = [
@@ -2170,6 +2178,7 @@ dependencies = [
  "deno_node",
  "deno_path_util",
  "deno_permissions",
+ "deno_rb",
  "deno_telemetry",
  "deno_terminal 0.2.0",
  "deno_tls",

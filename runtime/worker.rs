@@ -421,6 +421,7 @@ impl MainWorker {
         services.node_services,
         services.fs,
       ),
+      deno_rb::deno_rb::init_ops_and_esm(),
       // Ops from this crate
       ops::runtime::deno_runtime::init_ops_and_esm(main_module.clone()),
       ops::worker_host::deno_worker_host::init_ops_and_esm(

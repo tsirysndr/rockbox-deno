@@ -1,0 +1,16 @@
+[package]
+name = "deno_rb"
+version = "0.1.0"
+authors = ["Tsiry Sandratraina <tsiry.sndr@fluentci.io>"]
+edition.workspace = true
+license.workspace = true
+readme = "README.md"
+repository.workspace = true
+description = "Rockbox Plugin API for Deno"
+
+[lib]
+path = "lib.rs"
+
+[dependencies]
+reqwest.workspace = true
+deno_core.workspace = true
