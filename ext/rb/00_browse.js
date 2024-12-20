@@ -1,4 +1,7 @@
-export function rockboxBrowse() {
-}
+function getEntries() { }
 
-export function getEntries() { }
+export default {
+  tree: {
+    getEntries,
+  },
+};
