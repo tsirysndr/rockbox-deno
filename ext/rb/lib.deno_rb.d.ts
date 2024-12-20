@@ -2,7 +2,7 @@
 /// <reference lib="esnext" />
 /// <reference lib="esnext.disposable" />
 
-declare namespace Deno {
+declare namespace Rb {
   export interface Entry {
     name: string;
     attr: number;
@@ -44,9 +44,14 @@ declare namespace Deno {
       getEntries(path?: string): Promise<Entry[]>;
     };
     library: {
+      getAlbums(): Promise<Album[]>;
+      getArtists(): Promise<Artist[]>;
+      getTracks(): Promise<Track[]>;
       getAlbum(id: string): Promise<Album>;
       getArtist(id: string): Promise<Artist>;
       getTrack(id: string): Promise<Track>;
+      likeTrack(id: string): Promise<void>;
+      unlikeTrack(id: string): Promise<void>;
     };
     playback: {
       play(elapsed: number, offset: number): Promise<void>;
