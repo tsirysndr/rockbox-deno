@@ -56,6 +56,7 @@ deno_io.workspace = true
 deno_net.workspace = true
 deno_node.workspace = true
 deno_kv.workspace = true
+deno_rb.workspace = true
 deno_tls.workspace = true
 deno_url.workspace = true
 deno_web.workspace = true
@@ -90,6 +91,7 @@ deno_net.workspace = true
 deno_node.workspace = true
 deno_path_util.workspace = true
 deno_permissions.workspace = true
+deno_rb.workspace = true
 deno_telemetry.workspace = true
 deno_terminal.workspace = true
 deno_tls.workspace = true
@@ -109,7 +111,13 @@ http.workspace = true
 http-body-util.workspace = true
 hyper.workspace = true
 hyper-util.workspace = true
-hyper_v014 = { workspace = true, features = ["server", "stream", "http1", "http2", "runtime"] }
+hyper_v014 = { workspace = true, features = [
+  "server",
+  "stream",
+  "http1",
+  "http2",
+  "runtime",
+] }
 libc.workspace = true
 log.workspace = true
 netif = "0.1.6"
@@ -131,7 +139,19 @@ uuid.workspace = true
 which.workspace = true
 
 [target.'cfg(windows)'.dependencies]
-winapi = { workspace = true, features = ["commapi", "knownfolders", "mswsock", "objbase", "psapi", "shlobj", "tlhelp32", "winbase", "winerror", "winuser", "winsock2"] }
+winapi = { workspace = true, features = [
+  "commapi",
+  "knownfolders",
+  "mswsock",
+  "objbase",
+  "psapi",
+  "shlobj",
+  "tlhelp32",
+  "winbase",
+  "winerror",
+  "winuser",
+  "winsock2",
+] }
 ntapi = "0.4.0"
 windows-sys.workspace = true
 

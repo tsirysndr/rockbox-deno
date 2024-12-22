@@ -11,6 +11,10 @@ license.workspace = true
 repository.workspace = true
 description = "Provides the deno executable"
 
+[lib]
+name = "deno_rockbox"
+path = "lib.rs"
+
 [[bin]]
 name = "deno"
 path = "main.rs"
@@ -54,8 +58,13 @@ hmr = ["deno_runtime/hmr"]
 __vendored_zlib_ng = ["flate2/zlib-ng-compat", "libz-sys/zlib-ng"]
 
 [build-dependencies]
-deno_runtime = { workspace = true, features = ["include_js_files_for_snapshotting", "only_snapshotted_js_sources"] }
-deno_core = { workspace = true, features = ["include_js_files_for_snapshotting"] }
+deno_runtime = { workspace = true, features = [
+  "include_js_files_for_snapshotting",
+  "only_snapshotted_js_sources",
+] }
+deno_core = { workspace = true, features = [
+  "include_js_files_for_snapshotting",
+] }
 lazy-regex.workspace = true
 serde.workspace = true
 serde_json.workspace = true
@@ -68,10 +77,23 @@ winapi.workspace = true
 winres.workspace = true
 
 [dependencies]
-deno_ast = { workspace = true, features = ["bundler", "cjs", "codegen", "proposal", "react", "sourcemap", "transforms", "typescript", "view", "visit"] }
+deno_ast = { workspace = true, features = [
+  "bundler",
+  "cjs",
+  "codegen",
+  "proposal",
+  "react",
+  "sourcemap",
+  "transforms",
+  "typescript",
+  "view",
+  "visit",
+] }
 deno_cache_dir.workspace = true
 deno_config.workspace = true
-deno_core = { workspace = true, features = ["include_js_files_for_snapshotting"] }
+deno_core = { workspace = true, features = [
+  "include_js_files_for_snapshotting",
+] }
 deno_doc = { version = "=0.161.3", features = ["rust", "comrak"] }
 deno_error.workspace = true
 deno_graph = { version = "=0.86.3" }
@@ -82,7 +104,9 @@ deno_npm_cache.workspace = true
 deno_package_json.workspace = true
 deno_path_util.workspace = true
 deno_resolver = { workspace = true, features = ["sync"] }
-deno_runtime = { workspace = true, features = ["include_js_files_for_snapshotting"] }
+deno_runtime = { workspace = true, features = [
+  "include_js_files_for_snapshotting",
+] }
 deno_semver.workspace = true
 deno_task_shell = "=0.20.2"
 deno_telemetry.workspace = true
@@ -99,7 +123,12 @@ bytes.workspace = true
 cache_control.workspace = true
 capacity_builder.workspace = true
 chrono = { workspace = true, features = ["now"] }
-clap = { version = "=4.5.16", features = ["env", "string", "wrap_help", "error-context"] }
+clap = { version = "=4.5.16", features = [
+  "env",
+  "string",
+  "wrap_help",
+  "error-context",
+] }
 clap_complete = "=4.5.24"
 clap_complete_fig = "=4.5.2"
 color-print.workspace = true
@@ -127,7 +156,9 @@ hyper-util.workspace = true
 import_map = { version = "=0.20.1", features = ["ext"] }
 indexmap.workspace = true
 jsonc-parser = { workspace = true, features = ["cst", "serde"] }
-jupyter_runtime = { package = "runtimelib", version = "=0.19.0", features = ["tokio-runtime"] }
+jupyter_runtime = { package = "runtimelib", version = "=0.19.0", features = [
+  "tokio-runtime",
+] }
 lazy-regex.workspace = true
 libc.workspace = true
 libz-sys.workspace = true
@@ -173,12 +204,23 @@ uuid = { workspace = true, features = ["serde"] }
 walkdir = "=2.3.2"
 which.workspace = true
 zeromq.workspace = true
-zip = { version = "2.1.6", default-features = false, features = ["deflate-flate2"] }
+zip = { version = "2.1.6", default-features = false, features = [
+  "deflate-flate2",
+] }
 zstd.workspace = true
 
 [target.'cfg(windows)'.dependencies]
 junction.workspace = true
-winapi = { workspace = true, features = ["knownfolders", "mswsock", "objbase", "shlobj", "tlhelp32", "winbase", "winerror", "winsock2"] }
+winapi = { workspace = true, features = [
+  "knownfolders",
+  "mswsock",
+  "objbase",
+  "shlobj",
+  "tlhelp32",
+  "winbase",
+  "winerror",
+  "winsock2",
+] }
 
 [target.'cfg(unix)'.dependencies]
 nix.workspace = true

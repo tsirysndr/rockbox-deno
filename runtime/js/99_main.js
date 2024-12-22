@@ -73,6 +73,7 @@ import {
   denoNsUnstableById,
   unstableIds,
 } from "ext:runtime/90_deno_ns.js";
+import { rockboxNs } from "ext:runtime/90_rockbox_ns.js";
 import { errors } from "ext:runtime/01_errors.js";
 import * as webidl from "ext:deno_webidl/00_webidl.js";
 import { DOMException } from "ext:deno_web/01_dom_exception.js";
@@ -287,11 +288,10 @@ function formatException(error) {
   ) {
     return null;
   } else if (typeof error == "string") {
-    return `Uncaught ${
-      inspectArgs([quoteString(error, getDefaultInspectOptions())], {
-        colors: !getStderrNoColor(),
-      })
-    }`;
+    return `Uncaught ${inspectArgs([quoteString(error, getDefaultInspectOptions())], {
+      colors: !getStderrNoColor(),
+    })
+      }`;
   } else {
     return `Uncaught ${inspectArgs([error], { colors: !getStderrNoColor() })}`;
   }
@@ -569,8 +569,8 @@ const finalDenoNs = {
   // Deno.test and Deno.bench are noops here, but kept for compatibility; so
   // that they don't cause errors when used outside of `deno test`/`deno bench`
   // contexts.
-  test: () => {},
-  bench: () => {},
+  test: () => { },
+  bench: () => { },
 };
 
 ObjectDefineProperties(finalDenoNs, {
@@ -884,6 +884,8 @@ function bootstrapMainRuntime(runtimeOptions, warmup = false) {
     // Setup `Deno` global - we're actually overriding already existing global
     // `Deno` with `Deno` namespace from "./deno.ts".
     ObjectDefineProperty(globalThis, "Deno", core.propReadOnly(finalDenoNs));
+
+    ObjectDefineProperty(globalThis, "Rb", core.propReadOnly(rockboxNs));
 
     if (nodeBootstrap) {
       nodeBootstrap({

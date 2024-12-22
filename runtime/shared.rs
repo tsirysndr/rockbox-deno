@@ -31,7 +31,8 @@ extension!(runtime,
     deno_napi,
     deno_http,
     deno_io,
-    deno_fs
+    deno_fs,
+    deno_rb
   ],
   esm_entry_point = "ext:runtime/90_deno_ns.js",
   esm = [
@@ -48,6 +49,7 @@ extension!(runtime,
     "40_tty.js",
     "41_prompt.js",
     "90_deno_ns.js",
+    "90_rockbox_ns.js",
     "98_global_scope_shared.js",
     "98_global_scope_window.js",
     "98_global_scope_worker.js"

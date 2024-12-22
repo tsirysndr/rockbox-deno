@@ -1,0 +1,20 @@
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+  tonic_build::configure()
+    .out_dir("api")
+    .file_descriptor_set_path("api/rockbox_descriptor.bin")
+    .compile_protos(
+      &[
+        "proto/rockbox/v1alpha1/browse.proto",
+        "proto/rockbox/v1alpha1/device.proto",
+        "proto/rockbox/v1alpha1/library.proto",
+        "proto/rockbox/v1alpha1/metadata.proto",
+        "proto/rockbox/v1alpha1/playback.proto",
+        "proto/rockbox/v1alpha1/playlist.proto",
+        "proto/rockbox/v1alpha1/settings.proto",
+        "proto/rockbox/v1alpha1/sound.proto",
+        "proto/rockbox/v1alpha1/system.proto",
+      ],
+      &["proto"],
+    )?;
+  Ok(())
+}
