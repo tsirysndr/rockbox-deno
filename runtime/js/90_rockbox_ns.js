@@ -7,7 +7,7 @@ import * as sound from "ext:deno_rb/05_sound.js";
 import * as system from "ext:deno_rb/06_system.js";
 
 const rockboxNs = {
-  browse,
+  browse: browse.default,
   library,
   playback,
   playlist,
