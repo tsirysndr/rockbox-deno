@@ -1,5 +1,5 @@
 import { op_adjust_volume } from "ext:core/ops";
 
-export async function adjustVolume(steps) {
-  await op_adjust_volume(steps);
+export function adjustVolume(steps) {
+  return op_adjust_volume(steps);
 }

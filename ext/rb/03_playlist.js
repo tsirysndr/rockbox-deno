@@ -20,78 +20,78 @@ import {
   op_shuffle_playlist,
 } from "ext:core/ops";
 
-export async function getResumeInfo() {
-  await op_playlist_get_resume_info();
+export function getResumeInfo() {
+  return op_playlist_get_resume_info();
 }
 
-export async function getTrackInfo() {
-  await op_playlist_get_track_info();
+export function getTrackInfo() {
+  return op_playlist_get_track_info();
 }
 
-export async function getFirstIndex() {
-  await op_playlist_get_first_index();
+export function getFirstIndex() {
+  return op_playlist_get_first_index();
 }
 
-export async function getDisplayIndex() {
-  await op_playlist_get_display_index();
+export function getDisplayIndex() {
+  return op_playlist_get_display_index();
 }
 
-export async function amount() {
-  await op_playlist_amount();
+export function amount() {
+  return op_playlist_amount();
 }
 
-export async function playlistResume() {
-  await op_playlist_resume();
+export function playlistResume() {
+  return op_playlist_resume();
 }
 
-export async function resumeTrack(startIndex, crc, offset, elapsed) {
-  await op_playlist_resume_track(startIndex, crc, offset, elapsed);
+export function resumeTrack(startIndex, crc, offset, elapsed) {
+  return op_playlist_resume_track(startIndex, crc, offset, elapsed);
 }
 
-export async function setModified() {
-  await op_playlist_set_modified();
+export function setModified() {
+  return op_playlist_set_modified();
 }
 
-export async function start(startIndex, elapsed, offset) {
-  await op_playlist_start(startIndex, elapsed, offset);
+export function start(startIndex, elapsed, offset) {
+  return op_playlist_start(startIndex, elapsed, offset);
 }
 
-export async function sync() {
-  await op_playlist_sync();
+export function sync() {
+  return op_playlist_sync();
 }
 
-export async function removeAllTracks() {
-  await op_playlist_remove_all_tracks();
+export function removeAllTracks() {
+  return op_playlist_remove_all_tracks();
 }
 
-export async function removeTracks(params) {
-  await op_playlist_remove_tracks(params);
+export function removeTracks(params) {
+  return op_playlist_remove_tracks(params);
 }
 
-export async function createPlaylist(params) {
-  await op_create_playlist(params);
+export function createPlaylist(params) {
+  return op_create_playlist(params);
 }
 
-export async function insertTracks(params) {
-  await op_playlist_insert_tracks(params);
+export function insertTracks(params) {
+  return op_playlist_insert_tracks(params);
 }
 
-export async function insertDirectory(params) {
-  await op_playlist_insert_directory(params);
+export function insertDirectory(params) {
+  return op_playlist_insert_directory(params);
 }
 
-export async function insertPlaylist(params) {
-  await op_insert_playlist(params);
+export function insertPlaylist(params) {
+  return op_insert_playlist(params);
 }
 
-export async function insertAlbum(params) {
-  await op_playlist_insert_album(params);
+export function insertAlbum(params) {
+  return op_playlist_insert_album(params);
 }
 
-export async function insertArtistTracks(params) {
-  await op_playlist_insert_artist_tracks(params);
+export function insertArtistTracks(params) {
+  return op_playlist_insert_artist_tracks(params);
 }
 
-export async function shufflePlaylist(startIndex) {
-  await op_shuffle_playlist(startIndex);
+export function shufflePlaylist(startIndex) {
+  return op_shuffle_playlist(startIndex);
 }

@@ -244,6 +244,20 @@ pub async fn run(
   if !cli_options.is_quiet() {
     let mut handle = io::stdout().lock();
 
+    let banner = format!(
+      "{}\nWelcome to Rockbox REPL.",
+      colors::yellow(
+        r#"
+              __________               __   ___.
+    Open      \______   \ ____   ____ |  | _\_ |__   _______  ___
+    Source     |       _//  _ \_/ ___\|  |/ /| __ \ /  _ \  \/  /
+    Jukebox    |    |   (  <_> )  \___|    < | \_\ (  <_> > <  <
+    Firmware   |____|_  /\____/ \___  >__|_ \|___  /\____/__/\_ \
+                      \/            \/     \/    \/            \/
+    "#
+      )
+    );
+    writeln!(handle, "{}", banner)?;
     writeln!(handle, "Deno {}", crate::version::DENO_VERSION_INFO.deno)?;
     writeln!(handle, "exit using ctrl+d, ctrl+c, or close()")?;
 

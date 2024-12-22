@@ -20,78 +20,78 @@ import {
   op_status,
 } from "ext:core/ops";
 
-export async function play(elapsed, offset) {
-  await op_play(elapsed, offset);
+export function play(elapsed, offset) {
+  return op_play(elapsed, offset);
 }
 
-export async function pause() {
-  await op_pause();
+export function pause() {
+  return op_pause();
 }
 
-export async function resume() {
-  await op_resume();
+export function resume() {
+  return op_resume();
 }
 
-export async function next() {
-  await op_next();
+export function next() {
+  return op_next();
 }
 
-export async function previous() {
-  await op_previous();
+export function previous() {
+  return op_previous();
 }
 
-export async function fastForwardRewind(newTime) {
-  await op_fast_forward_rewind(newTime);
+export function fastForwardRewind(newTime) {
+  return op_fast_forward_rewind(newTime);
 }
 
-export async function status() {
-  await op_status();
+export function status() {
+  return op_status();
 }
 
-export async function currentTrack() {
-  await op_current_track();
+export function currentTrack() {
+  return op_current_track();
 }
 
-export async function nextTrack() {
-  await op_next_track();
+export function nextTrack() {
+  return op_next_track();
 }
 
-export async function flushAndReloadTracks() {
-  await op_flush_and_reload_tracks();
+export function flushAndReloadTracks() {
+  return op_flush_and_reload_tracks();
 }
 
-export async function getFilePosition() {
-  await op_get_file_position();
+export function getFilePosition() {
+  return op_get_file_position();
 }
 
-export async function hardStop() {
-  await op_hard_stop();
+export function hardStop() {
+  return op_hard_stop();
 }
 
-export async function playAlbum(options) {
-  await op_play_album(options);
+export function playAlbum(options) {
+  return op_play_album(options);
 }
 
-export async function playAllTracks(options) {
-  await op_play_all_tracks(options);
+export function playAllTracks(options) {
+  return op_play_all_tracks(options);
 }
 
-export async function playArtistTracks(options) {
-  await op_play_artist_tracks(options);
+export function playArtistTracks(options) {
+  return op_play_artist_tracks(options);
 }
 
-export async function playDirectory(options) {
-  await op_play_directory(options);
+export function playDirectory(options) {
+  return op_play_directory(options);
 }
 
-export async function playLikedTracks(options) {
-  await op_play_liked_tracks(options);
+export function playLikedTracks(options) {
+  return op_play_liked_tracks(options);
 }
 
-export async function playPlaylist(options) {
-  await op_play_playlist(options);
+export function playPlaylist(options) {
+  return op_play_playlist(options);
 }
 
-export async function playTrack(path) {
-  await op_play_track(path);
+export function playTrack(path) {
+  return op_play_track(path);
 }
