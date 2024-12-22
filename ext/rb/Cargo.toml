@@ -12,5 +12,12 @@ description = "Rockbox Plugin API for Deno"
 path = "lib.rs"
 
 [dependencies]
-reqwest.workspace = true
 deno_core.workspace = true
+serde.workspace = true
+tonic = "0.12.3"
+tonic-reflection = "0.12.3"
+tonic-web = "0.12.3"
+prost = "0.13.2"
+
+[build-dependencies]
+tonic-build = "0.12.3"

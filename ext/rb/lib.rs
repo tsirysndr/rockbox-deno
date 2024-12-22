@@ -6,6 +6,14 @@ pub mod settings;
 pub mod sound;
 pub mod system;
 pub mod types;
+pub mod api {
+  #[path = ""]
+  pub mod rockbox {
+
+    #[path = "rockbox.v1alpha1.rs"]
+    pub mod v1alpha1;
+  }
+}
 
 use browse::*;
 use library::*;
@@ -15,13 +23,13 @@ use settings::*;
 use sound::*;
 use system::*;
 
+use std::env;
 use std::path::PathBuf;
 
 deno_core::extension!(
   deno_rb,
   ops = [
     // browse
-    op_rockbox_browse,
     op_tree_get_entries,
     // library
     op_get_albums,
@@ -32,6 +40,12 @@ deno_core::extension!(
     op_get_track,
     op_like_track,
     op_unlike_track,
+    op_like_album,
+    op_unlike_album,
+    op_get_liked_tracks,
+    op_get_liked_albums,
+    op_scan_library,
+    op_search,
     // playback
     op_play,
     op_pause,
@@ -45,6 +59,13 @@ deno_core::extension!(
     op_flush_and_reload_tracks,
     op_get_file_position,
     op_hard_stop,
+    op_play_album,
+    op_play_artist_tracks,
+    op_play_playlist,
+    op_play_directory,
+    op_play_track,
+    op_play_liked_tracks,
+    op_play_all_tracks,
     // playlist
     op_playlist_get_resume_info,
     op_playlist_get_track_info,
@@ -62,6 +83,8 @@ deno_core::extension!(
     op_playlist_insert_tracks,
     op_playlist_insert_directory,
     op_insert_playlist,
+    op_playlist_insert_album,
+    op_playlist_insert_artist_tracks,
     op_shuffle_playlist,
     // settings
     op_get_global_settings,
@@ -85,4 +108,12 @@ deno_core::extension!(
 
 pub fn get_declaration() -> PathBuf {
   PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("lib.deno_rb.d.ts")
+}
+
+pub fn build_url() -> String {
+  let host =
+    env::var("ROCKBOX_HOST").unwrap_or_else(|_| "localhost".to_string());
+  let port = env::var("ROCKBOX_PORT").unwrap_or_else(|_| "port".to_string());
+
+  format!("tcp://{}:{}", host, port)
 }
