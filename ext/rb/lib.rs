@@ -113,7 +113,7 @@ pub fn get_declaration() -> PathBuf {
 pub fn build_url() -> String {
   let host =
     env::var("ROCKBOX_HOST").unwrap_or_else(|_| "localhost".to_string());
-  let port = env::var("ROCKBOX_PORT").unwrap_or_else(|_| "port".to_string());
+  let port = env::var("ROCKBOX_PORT").unwrap_or_else(|_| "6061".to_string());
 
   format!("tcp://{}:{}", host, port)
 }
