@@ -12,7 +12,7 @@ repository.workspace = true
 description = "Provides the deno executable"
 
 [lib]
-name = "deno_rockbox"
+name = "deno"
 path = "lib.rs"
 
 [[bin]]
