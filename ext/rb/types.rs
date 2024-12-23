@@ -3,6 +3,7 @@ use serde::{Deserialize, Serialize};
 use crate::api::rockbox::v1alpha1::SearchResponse;
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Entry {
   pub name: String,
   pub attr: i32,
@@ -22,6 +23,7 @@ impl From<crate::api::rockbox::v1alpha1::Entry> for Entry {
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Album {
   pub id: String,
   pub title: String,
@@ -51,6 +53,7 @@ impl From<crate::api::rockbox::v1alpha1::Album> for Album {
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Artist {
   pub id: String,
   pub name: String,
@@ -74,6 +77,7 @@ impl From<crate::api::rockbox::v1alpha1::Artist> for Artist {
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Track {
   pub id: String,
   pub path: String,
@@ -131,6 +135,7 @@ impl From<crate::api::rockbox::v1alpha1::Track> for Track {
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct CurrentTrack {
   pub title: String,
   pub artist: String,
@@ -194,6 +199,7 @@ impl From<crate::api::rockbox::v1alpha1::CurrentTrackResponse>
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct NextTrack {
   pub title: String,
   pub artist: String,
@@ -247,6 +253,7 @@ impl From<crate::api::rockbox::v1alpha1::NextTrackResponse> for NextTrack {
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct EqBandSetting {
   pub cutoff: i32,
   pub q: i32,
@@ -276,6 +283,7 @@ impl From<crate::api::rockbox::v1alpha1::EqBandSetting> for EqBandSetting {
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct ReplaygainSettings {
   pub noclip: bool,
   pub r#type: i32,
@@ -309,6 +317,7 @@ impl From<crate::api::rockbox::v1alpha1::ReplaygainSettings>
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Settings {
   pub volume: i32,
   pub balance: i32,
@@ -394,6 +403,7 @@ impl From<crate::api::rockbox::v1alpha1::GetGlobalSettingsResponse>
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct SystemStatus {
   pub resume_index: i32,
   pub resume_crc32: u32,
@@ -429,6 +439,7 @@ impl From<crate::api::rockbox::v1alpha1::GetGlobalStatusResponse>
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct CurrentPlaylist {
   pub index: i32,
   pub amount: i32,
@@ -458,6 +469,7 @@ impl From<crate::api::rockbox::v1alpha1::GetCurrentResponse>
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct SearchResults {
   pub albums: Vec<Album>,
   pub tracks: Vec<Track>,

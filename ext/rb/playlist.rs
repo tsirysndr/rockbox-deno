@@ -112,11 +112,11 @@ pub async fn op_playlist_get_display_index() -> Result<(), AnyError> {
 }
 
 #[op2(async)]
-pub async fn op_playlist_amount() -> Result<(), AnyError> {
+pub async fn op_playlist_amount() -> Result<i32, AnyError> {
   let url = build_url();
   let mut client = PlaylistServiceClient::connect(url).await?;
-  let _response = client.amount(AmountRequest {}).await?.into_inner();
-  Ok(())
+  let response = client.amount(AmountRequest {}).await?.into_inner();
+  Ok(response.amount)
 }
 
 #[op2(async)]
@@ -320,7 +320,7 @@ pub async fn op_shuffle_playlist(
 
 #[op2(async)]
 #[serde]
-pub async fn op_playlist_get_curent() -> Result<CurrentPlaylist, AnyError> {
+pub async fn op_playlist_get_current() -> Result<CurrentPlaylist, AnyError> {
   let url = build_url();
   let mut client = PlaylistServiceClient::connect(url).await?;
   let response = client.get_current(GetCurrentRequest {}).await?.into_inner();

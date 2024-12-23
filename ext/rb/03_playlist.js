@@ -18,6 +18,7 @@ import {
   op_playlist_start,
   op_playlist_sync,
   op_shuffle_playlist,
+  op_playlist_get_current,
 } from "ext:core/ops";
 
 export function getResumeInfo() {
@@ -94,4 +95,8 @@ export function insertArtistTracks(params) {
 
 export function shufflePlaylist(startIndex) {
   return op_shuffle_playlist(startIndex);
+}
+
+export function getCurrentPlaylist() {
+  return op_playlist_get_current();
 }

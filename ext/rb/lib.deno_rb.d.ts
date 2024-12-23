@@ -282,6 +282,17 @@ declare namespace Rb {
     replaygainSettins?: ReplaygainSettings;
   }
 
+  export interface CurrentPlaylist {
+    index: number;
+    amount: number;
+    maxPlaylistSize: number;
+    firstIndex: number;
+    lastInsertPos: number;
+    seed: number;
+    lastShuffledStart: number;
+    tracks: Track[];
+  }
+
   export const library: {
     getAlbums(): Promise<Album[]>;
     getArtists(): Promise<Artist[]>;
@@ -339,6 +350,7 @@ declare namespace Rb {
     insertAlbum(options: InsertAlbumOptions): Promise<void>;
     insertArtistTracks(options: InsertArtistTracksOptions): Promise<void>;
     shufflePlaylist(startIndex?: number): Promise<void>;
+    getCurrentPlaylist(): Promise<CurrentPlaylist>;
   };
   export const settings: {
     getGlobalSettings: () => Promise<Settings>;

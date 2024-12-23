@@ -86,6 +86,7 @@ deno_core::extension!(
     op_playlist_insert_album,
     op_playlist_insert_artist_tracks,
     op_shuffle_playlist,
+    op_playlist_get_current,
     // settings
     op_get_global_settings,
     op_save_settings,
