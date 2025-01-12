@@ -217,6 +217,7 @@
     "ext:deno_rb/04_settings.js": "../ext/rb/04_settings.js",
     "ext:deno_rb/05_sound.js": "../ext/rb/05_sound.js",
     "ext:deno_rb/06_system.js": "../ext/rb/06_system.js",
+    "ext:deno_rb/07_sdk.ts": "../ext/rb/07_sdk.ts",
     "ext:deno_url/00_url.js": "../ext/url/00_url.js",
     "ext:deno_url/01_urlpattern.js": "../ext/url/01_urlpattern.js",
     "ext:deno_web/00_infra.js": "../ext/web/00_infra.js",

@@ -240,6 +240,57 @@ declare namespace Rb {
     shuffle?: boolean;
   }
 
+  export interface ExtensionMetadata {
+    name: string;
+    version: string;
+    author: string;
+    license: string;
+    readme?: string;
+    tags?: string[];
+    description?: string;
+    repository?: string;
+    homepage?: string;
+  }
+
+  export interface MusicProvider {
+    initialize(): void;
+    shutdown(): void;
+    getMetadata(): ExtensionMetadata;
+    browse(path?: string): PRomise<Array<{ name: string; type: 'file' | 'directory'; path: string }>>;
+    download(path: string, destination: string): Promise<void>;
+    play(path: string): Promise<void>;
+    upload(path: string, destination: string): Promise<void>;
+  }
+
+  export interface MediaStreamer {
+    initialize(): void;
+    shutdown(): void;
+    getMetadata(): ExtensionMetadata;
+    stream(mediaUrl: string, target: string): Promise<void>;
+    stop(): Promise<void>;
+    pause(): Promise<void>;
+    resume(): Promise<void>;
+    seek(position: number): Promise<void>;
+    next(): Promise<void>;
+    previous(): Promise<void>;
+    listTargets(): Promise<
+      Array<{
+        name: string;
+        type: string;
+        address: string;
+      }>
+    >;
+  }
+
+  export interface RockboxSDK {
+    registerProvider(provider: MusicProvider): void;
+    registerStreamer(streamer: MediaStreamer): void;
+    listProviders(): ExtensionMetadata[];
+    listStreamers(): ExtenstionMetadata[];
+  }
+
+  export const sdk: RockboxSDK;
+
   export const browse: {
     tree: {
       getEntries(path?: string): Promise<Entry[]>;

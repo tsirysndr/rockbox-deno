@@ -5,8 +5,12 @@ import * as playlist from "ext:deno_rb/03_playlist.js";
 import * as settings from "ext:deno_rb/04_settings.js";
 import * as sound from "ext:deno_rb/05_sound.js";
 import * as system from "ext:deno_rb/06_system.js";
+import { RockboxSDK } from "ext:deno_rb/07_sdk.ts";
+
+const sdk = new RockboxSDK();
 
 const rockboxNs = {
+  sdk,
   browse: browse.default,
   library,
   playback,
