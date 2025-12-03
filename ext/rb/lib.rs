@@ -104,6 +104,7 @@ deno_core::extension!(
     "04_settings.js",
     "05_sound.js",
     "06_system.js",
+    "07_sdk.ts",
   ],
 );
 

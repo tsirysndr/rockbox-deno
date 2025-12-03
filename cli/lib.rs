@@ -128,6 +128,26 @@ fn unwrap_or_exit<T>(result: Result<T, AnyError>) -> T {
   }
 }
 
+fn unwrap_or_err<T>(result: Result<T, AnyError>) -> Result<T, AnyError> {
+  match result {
+    Ok(value) => Ok(value),
+    Err(error) => {
+      let mut error_string = format!("{:?}", error);
+
+      if let Some(e) = error.downcast_ref::<JsError>() {
+        error_string = format_js_error(e);
+      }
+
+      log::error!(
+        "{}: {}",
+        colors::red_bold("error"),
+        &error_string.trim_start_matches("error: ")
+      );
+      Err(error)
+    }
+  }
+}
+
 fn resolve_flags_and_init(
   args: Vec<std::ffi::OsString>,
 ) -> Result<Flags, AnyError> {
@@ -387,10 +407,11 @@ pub(crate) fn unstable_exit_cb(feature: &str, api_name: &str) {
   deno_runtime::exit(70);
 }
 
-pub fn cli(args: Vec<std::ffi::OsString>) {
+pub fn cli(args: Vec<std::ffi::OsString>) -> Result<(), AnyError> {
   let future = async move {
     let flags = resolve_flags_and_init(args)?;
     run_subcommand(Arc::new(flags)).await
   };
-  unwrap_or_exit(create_and_run_current_thread_with_maybe_metrics(future));
+  unwrap_or_err(create_and_run_current_thread_with_maybe_metrics(future))?;
+  Ok(())
 }
