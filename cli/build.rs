@@ -421,10 +421,10 @@ fn main() {
 
   let c = PathBuf::from(env::var_os("CARGO_MANIFEST_DIR").unwrap());
   let o = PathBuf::from(env::var_os("OUT_DIR").unwrap());
-println!(">> manomboka");
+  println!(">> manomboka");
   let compiler_snapshot_path = o.join("COMPILER_SNAPSHOT.bin");
   ts::create_compiler_snapshot(compiler_snapshot_path, &c);
-println!(">> vita");
+  println!(">> vita");
 
   #[cfg(not(feature = "hmr"))]
   {
