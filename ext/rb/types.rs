@@ -284,6 +284,47 @@ impl From<crate::api::rockbox::v1alpha1::EqBandSetting> for EqBandSetting {
 
 #[derive(Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
+pub struct CompressorSettings {
+  pub threshold: i32,
+  pub makeup_gain: i32,
+  pub ratio: i32,
+  pub knee: i32,
+  pub release_time: i32,
+  pub attack_time: i32,
+}
+
+impl Into<crate::api::rockbox::v1alpha1::CompressorSettings>
+  for CompressorSettings
+{
+  fn into(self) -> crate::api::rockbox::v1alpha1::CompressorSettings {
+    crate::api::rockbox::v1alpha1::CompressorSettings {
+      threshold: self.threshold,
+      makeup_gain: self.makeup_gain,
+      ratio: self.ratio,
+      knee: self.knee,
+      release_time: self.release_time,
+      attack_time: self.attack_time,
+    }
+  }
+}
+
+impl From<crate::api::rockbox::v1alpha1::CompressorSettings>
+  for CompressorSettings
+{
+  fn from(c: crate::api::rockbox::v1alpha1::CompressorSettings) -> Self {
+    Self {
+      threshold: c.threshold,
+      makeup_gain: c.makeup_gain,
+      ratio: c.ratio,
+      knee: c.knee,
+      release_time: c.release_time,
+      attack_time: c.attack_time,
+    }
+  }
+}
+
+#[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct ReplaygainSettings {
   pub noclip: bool,
   pub r#type: i32,

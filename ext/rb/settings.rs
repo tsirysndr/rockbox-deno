@@ -1,5 +1,6 @@
 use deno_core::{error::AnyError, op2};
 
+use crate::types::CompressorSettings;
 use crate::types::EqBandSetting;
 use crate::types::ReplaygainSettings;
 use crate::{
@@ -41,6 +42,7 @@ pub struct SaveSettingsParams {
   pub eq_enabled: Option<bool>,
   pub eq_band_settings: Vec<EqBandSetting>,
   pub replaygain_settings: Option<ReplaygainSettings>,
+  pub compressor_settings: Option<CompressorSettings>,
 }
 
 #[op2(async)]
@@ -94,6 +96,7 @@ pub async fn op_save_settings(
         .map(|v| v.into())
         .collect(),
       replaygain_settings: params.replaygain_settings.map(|v| v.into()),
+      compressor_settings: params.compressor_settings.map(|v| v.into()),
     })
     .await?;
   Ok(())
